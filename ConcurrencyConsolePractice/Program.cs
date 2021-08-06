@@ -8,7 +8,7 @@ namespace ConcurrencyConsolePractice
     {
         static void Main(string[] args)
         {
-            
+
             //1.new方式实例化一个Task，需要通过Start方法启动
             // Task task = new Task(() =>
             // {
@@ -30,9 +30,24 @@ namespace ConcurrencyConsolePractice
             //       //Thread.Sleep(100);
             //       Console.WriteLine($"hello, task3的线程ID为{ Thread.CurrentThread.ManagedThreadId}");
             //   });
-            Task.FromResult("121");
-            Console.WriteLine($"执行主线程！{ Thread.CurrentThread.ManagedThreadId}");
-            Console.ReadKey();
+
+            // Task.FromResult("121");
+            // Console.WriteLine($"执行主线程！{ Thread.CurrentThread.ManagedThreadId}");
+            // Console.ReadKey();
+        }
+
+        async Task DoSomethingAsync()
+        {
+            int value=13;
+            
+            // 异步等待1秒
+            await Task.Delay(TimeSpan.FromSeconds(1));
+
+            value*=2;
+
+            // 异步等待1秒
+            await Task.Delay(TimeSpan.FromSeconds(1));
+
         }
     }
 }
